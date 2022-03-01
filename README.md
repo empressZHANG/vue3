@@ -11,3 +11,4 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 vue2.0 与 vue3.0的区别
 1. vue2.0 需要根元素，vue3.0可以是代码片段(fragment)
 2. vuex 没有map类型的方法 
+3. vue3 router.currentRoute 是ref响应式数据 router.currentRoute.value.fullPath
