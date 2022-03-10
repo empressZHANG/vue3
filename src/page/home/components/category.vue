@@ -10,7 +10,7 @@
         "
         :class="item.cateKey === cateKey ? 'nav_active' : ''"
       >
-        <a href="">{{ item.name }}</a>
+        <a href="">{{ item.name }}-ssh</a>
       </li>
     </ul>
     <div
