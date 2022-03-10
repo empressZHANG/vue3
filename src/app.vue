@@ -1,6 +1,9 @@
 <template>
-    <div>
-     App {{$store.state.user.profile.username}}
-     <button @click="$store.commit('user/setUser',{username:'empress'})">设置用户信息</button>
-    </div>
+  <!--一级路由-->
+  <RouterView />
 </template>
+<script>
+export default{
+  name:'HomePage'
+}
+</script>

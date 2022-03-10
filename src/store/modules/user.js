@@ -8,6 +8,7 @@ export default {
                 userName: '',
                 userId: '',
                 userMobile: '',
+                userFace:'',
                 ht_token: ''
             }
         }

@@ -1,8 +1,8 @@
 import axios from 'axios'
-import store from '@/store'
-import router from '@/router'
+import store from '../store'
+import router from '../router'
 
-export const baseURL = 'testapi.huatu.com/lumenapi'
+export const baseURL = '//testapi.huatu.com/lumenapi'
 
 const instance = axios.create({
     baseURL,
@@ -37,12 +37,11 @@ instance.interceptors.response.use(res => {
     return Promise.reject(err)
 })
 
-export const request = (url, method, submitData) => {
-
+export default (url, method, submitData) => {
     return instance({
         url,
         method,
         //[] 设置动态的key，写js表达式，js表达式的执行结果当做key
-        [method.toLowerCase() === 'get' ? params : data]: submitData
+        [method.toLowerCase() === 'get' ? 'params' : 'data']: submitData
     })
 }
