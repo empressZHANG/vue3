@@ -2,7 +2,8 @@ import axios from 'axios'
 import store from '../store'
 import router from '../router'
 
-export const baseURL = '//testapi.huatu.com/lumenapi'
+export const baseURL = '//testapi.huatu.com'
+export const panguURL = 'https://devpangu-api.htexam.com'
 
 const instance = axios.create({
     baseURL,
@@ -37,7 +38,7 @@ instance.interceptors.response.use(res => {
     return Promise.reject(err)
 })
 
-export default (url, method, submitData) => {
+export const request = (url, method, submitData) => {
     return instance({
         url,
         method,

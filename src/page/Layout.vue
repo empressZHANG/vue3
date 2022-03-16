@@ -1,10 +1,10 @@
 <template>
   <topNav />
   <headerBar />
-  <div class="htzxMain" style="height:10000px">
+  <main>
     <!--二级路由-->
     <RouterView />
-  </div>
+  </main>
   <!-- <footer /> -->
 </template>
 <script setup>

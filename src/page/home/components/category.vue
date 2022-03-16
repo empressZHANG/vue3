@@ -2,31 +2,20 @@
   <div class="index_category fl">
     <ul class="index_category_list">
       <li
-        v-for="item in categoryList"
+        v-for="(item, index) in categoryList"
         :key="item.cateKey"
-        @mouseenter="
-          cateKey = item.cateKey;
-          cateId = item.cateId;
-        "
+        @mouseenter="categoryShow(item, index)"
+         @mouseleave="cateKey = null"
         :class="item.cateKey === cateKey ? 'nav_active' : ''"
       >
-        <a href="">{{ item.name }}-ssh</a>
+        <a href="">{{ item.name }}</a>
       </li>
     </ul>
-    <div
-      class="index_category_con"
-      v-if="curCategory && curCategory.isShow"
-      @mouseleave="
-        cateKey = null;
-      "
-    >
+    <div class="index_category_con" v-if="cateKey" @mouseleave="cateKey = null">
       <article class="icc_firstMenu">
-        <a
-          href=""
-          v-for="(item, index) in curCategory.cateChild"
-          :key="index"
-          >{{ item.title }}</a
-        >
+        <a href="" v-for="(item, index) in curCategory[cateKey]" :key="index">{{
+          item.title
+        }}</a>
       </article>
     </div>
   </div>
@@ -49,23 +38,19 @@ const categoryList = computed(() => {
   return list;
 });
 
-const cateKey = ref(null);
-const cateId = ref([]);
+let cateKey = ref(null);
+let curCategory = ref({});
 
-const curCategory = computed(() => {
-  return categoryList.value.find((item) => {
-    if (item.cateKey === cateKey.value) {
-      if (!item.cateChild) {
-        findCategoryClassify({
-          categoryId: cateId.value.join(","),
-        }).then((res) => (item.cateChild = res.data));
-      }
-      item.isShow = true;
-      console.log(item);
-      return item;
-    }
-  });
-});
+const categoryShow = (item, index) => {
+  cateKey.value = item.cateKey;
+  if (!curCategory.value.hasOwnProperty(item.cateKey)) {
+    findCategoryClassify({
+      categoryId: item.cateId.join(","),
+    }).then((res) => {
+      curCategory.value[item.cateKey] = res.data;
+    });
+  }
+};
 </script>
 
 <style scoped lang="less">

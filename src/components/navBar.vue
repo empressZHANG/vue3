@@ -45,6 +45,7 @@ const scrollY = y;
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 99;
   width: 100%;
   height: 32px;
   transition: all .2s;
