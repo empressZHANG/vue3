@@ -5,7 +5,7 @@
         v-for="(item, index) in categoryList"
         :key="item.cateKey"
         @mouseenter="categoryShow(item, index)"
-         @mouseleave="cateKey = null"
+        @mouseleave="cateKey = null"
         :class="item.cateKey === cateKey ? 'nav_active' : ''"
       >
         <a href="">{{ item.name }}</a>
@@ -45,7 +45,7 @@ const categoryShow = (item, index) => {
   cateKey.value = item.cateKey;
   if (!curCategory.value.hasOwnProperty(item.cateKey)) {
     findCategoryClassify({
-      categoryId: item.cateId.join(","),
+      categoryId: item.cateId && item.cateId.join(","),
     }).then((res) => {
       curCategory.value[item.cateKey] = res.data;
     });

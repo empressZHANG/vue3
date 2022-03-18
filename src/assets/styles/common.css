@@ -269,3 +269,21 @@ tr:hover {
 .pos_ab {
   position: absolute;
 }
+.htzx_modColor_red {
+  color: #ff4e45;
+}
+.htzx_modColor_green {
+  color: #16cc86;
+}
+.htzx_modColor_blue {
+  color: #2d88ff;
+}
+.htzx_modBg_red {
+  background: #ffedec;
+}
+.htzx_modBg_green {
+  background: #e7f9f2;
+}
+.htzx_modBg_blue {
+  background: #eaf3ff;
+}

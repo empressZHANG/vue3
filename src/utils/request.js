@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '../store'
 import router from '../router'
 
-export const baseURL = '//testapi.huatu.com'
+export const baseURL = 'https://testapi.huatu.com'
 export const panguURL = 'https://devpangu-api.htexam.com'
 
 const instance = axios.create({

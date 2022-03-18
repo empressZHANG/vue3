@@ -7,10 +7,10 @@
         :key="item.id"
         :href="item.activeUrl"
       >
-        <img :src="item.ImgUrl" :alt="item.decribe" data-bannerid="1" />
+        <img :src="item.ImgUrl" :alt="item.decribe" />
       </a>
     </div>
-    <div class="banner-container-pagination">
+    <div class="banner-container-pagination" v-if="swipers.length > 1">
       <span
         v-for="(item, index) in swipers"
         :key="item.id"
@@ -19,10 +19,18 @@
       ></span>
     </div>
     <!--分页器。如果放置在swiper-container外面，需要自定义样式。-->
-    <div class="banner-container-arrowBtn prev" @click="toggle(-1)">
+    <div
+      class="banner-container-arrowBtn prev"
+      @click="toggle(-1)"
+      v-if="showBtn"
+    >
       <i class="iconfont pciconzuo"></i>
     </div>
-    <div class="banner-container-arrowBtn next" @click="toggle(1)">
+    <div
+      class="banner-container-arrowBtn next"
+      @click="toggle(1)"
+      v-if="showBtn"
+    >
       <i class="iconfont pciconyou"></i>
     </div>
   </div>
@@ -40,6 +48,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    showBtn: {
+      type: Boolean,
+      default: false,
+    },
     duration: {
       type: Number,
       default: 3000,
@@ -52,16 +64,16 @@ export default {
     const autoPlayFn = () => {
       clearInterval(timer); //防止定时器重复添加
       timer = setInterval(() => {
+        swiperIndex.value++;
         if (swiperIndex.value >= props.swipers.length) {
           swiperIndex.value = 0;
         }
-        swiperIndex.value++;
       }, props.duration);
     };
     watch(
       () => props.swipers,
       (nv, ov) => {
-        if (nv.length && props.autoPlay) {
+        if (nv.length > 1 && props.autoPlay) {
           autoPlayFn();
         }
       },
@@ -85,14 +97,14 @@ export default {
       } else if (newIndex < 0) {
         swiperIndex.value = props.swipers.length - 1;
         return;
-      }else{
-        swiperIndex.value = newIndex
+      } else {
+        swiperIndex.value = newIndex;
       }
     };
 
-    onUnmounted(()=>{
-      clearInterval(timer)
-    })
+    onUnmounted(() => {
+      clearInterval(timer);
+    });
 
     return { swiperIndex, stop, start, toggle };
   },
@@ -123,6 +135,7 @@ export default {
       img {
         width: 100%;
         height: 100%;
+        border-radius: 8px;
       }
     }
   }

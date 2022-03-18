@@ -1,6 +1,6 @@
 <template>
   <div class="index_banner">
-    <carousel :swipers="swipers" autoPlay/>
+    <carousel :swipers="swipers"  showBtn autoPlay/>
   </div>
 </template>
 <script setup>
@@ -19,9 +19,12 @@ findBanner({cateId:0}).then((res) => {
   border-radius: 0 8px 8px 0px;
 }
 .banner-container {
-  ::v-deep .banner-container-arrowBtn {
+  :deep(.banner-container-arrowBtn ){
     opacity: 0.2;
     background: #000;
+  }
+  :deep(.swiper-slide img){
+    border-radius: 0 8px 8px 0;
   }
 }
 </style>
