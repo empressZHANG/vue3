@@ -5,26 +5,39 @@
         <h2 class="fl">{{ title }}</h2>
         <slot name="right" />
       </div>
-      <div class="panel-container-content mt15">
-        <div class="panel-banner">
-          <carousel :swipers="swipers" autoPlay />
+      <Transition name="fade">
+        <div
+          class="panel-container-content mt15"
+          v-if="swipers.length && courseList.length"
+        >
+          <div class="panel-banner">
+            <carousel :swipers="swipers" autoPlay />
+          </div>
+            <course
+              :courseInfo="item"
+              v-for="item in courseList"
+              :key="item.classId"
+            />
         </div>
-        <template v-for="item in courseList" :key="item.classId">
-            <course :courseInfo="item"/>
-        </template>
-      </div>
+        <HomeSkeleton v-else/>
+        <!-- <div style="background:#fff;position:relative;z-index:11" v-else><HomeSkeleton/></div> -->
+      </Transition>
     </div>
   </div>
 </template>
 <script setup>
-import { useLazyData } from '@/hooks/homeLazyData.js'
+import { useLazyData } from "@/hooks/homeLazyData.js";
+
 
 const props = defineProps({
   title: String,
-  cateId: String
+  cateId: String,
 });
 
-const { target,swipers,courseList } = useLazyData(props.cateId)
+
+const { target, swipers, courseList } = useLazyData(props.cateId);
+
+
 </script>
 <style scoped lang="less">
 .panel-container {
@@ -56,10 +69,11 @@ const { target,swipers,courseList } = useLazyData(props.cateId)
       user-select: none;
     }
     :deep(.banner-container) {
-      background-size:64px;
+      background-size: 64px;
     }
-    :deep(.courseInfo){
-      &:nth-of-type(2),&:nth-of-type(6){
+    :deep(.courseInfo) {
+      &:nth-of-type(2),
+      &:nth-of-type(6) {
         margin-right: 0;
       }
     }
