@@ -13,13 +13,13 @@
           <div class="panel-banner">
             <carousel :swipers="swipers" autoPlay />
           </div>
-            <course
-              :courseInfo="item"
-              v-for="item in courseList"
-              :key="item.classId"
-            />
+          <course
+            :courseInfo="item"
+            v-for="item in courseList"
+            :key="item.classId"
+          />
         </div>
-        <HomeSkeleton v-else/>
+        <HomeSkeleton v-else />
         <!-- <div style="background:#fff;position:relative;z-index:11" v-else><HomeSkeleton/></div> -->
       </Transition>
     </div>
@@ -28,16 +28,12 @@
 <script setup>
 import { useLazyData } from "@/hooks/homeLazyData.js";
 
-
 const props = defineProps({
   title: String,
   cateId: String,
 });
 
-
 const { target, swipers, courseList } = useLazyData(props.cateId);
-
-
 </script>
 <style scoped lang="less">
 .panel-container {

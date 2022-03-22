@@ -1,39 +1,41 @@
 <template>
   <div class="home-skeleton">
-    <a class="skeleton-Banner">
-      <skeleton bg="#e4e4e4" width="580px" height="280px" animated />
-    </a>
-    <a v-for="i in 6" :key="i" class="home-Skeleton">
-      <skeleton bg="#e4e4e4" width="100%" height="24px" animated />
-      <skeleton
-        bg="#e4e4e4"
-        width="100%"
-        height="12px"
-        marginTop="8px"
-        animated
-      />
-      <skeleton
-        bg="#e4e4e4"
-        width="100%"
-        height="12px"
-        marginTop="16px"
-        animated
-      />
-      <skeleton
-        bg="#e4e4e4"
-        width="100%"
-        height="47px"
-        marginTop="15px"
-        animated
-      />
-      <skeleton
-        bg="#e4e4e4"
-        width="100%"
-        height="64px"
-        marginTop="15px"
-        animated
-      />
-    </a>
+    <div class="htzxMain">
+      <a class="skeleton-Banner">
+        <skeleton bg="#e4e4e4" width="580px" height="280px" animated />
+      </a>
+      <a v-for="i in 6" :key="i" class="home-Skeleton">
+        <skeleton bg="#e4e4e4" width="100%" height="24px" animated />
+        <skeleton
+          bg="#e4e4e4"
+          width="100%"
+          height="12px"
+          marginTop="8px"
+          animated
+        />
+        <skeleton
+          bg="#e4e4e4"
+          width="100%"
+          height="12px"
+          marginTop="16px"
+          animated
+        />
+        <skeleton
+          bg="#e4e4e4"
+          width="100%"
+          height="47px"
+          marginTop="15px"
+          animated
+        />
+        <skeleton
+          bg="#e4e4e4"
+          width="100%"
+          height="64px"
+          marginTop="15px"
+          animated
+        />
+      </a>
+    </div>
   </div>
 </template>
 <script>
@@ -43,8 +45,8 @@ export default {
 </script>
 
 <style scoped lang="less">
-.home-skeleton{
-  margin-top:15px;
+.home-skeleton {
+  margin-top: 15px;
   background: #fff;
 }
 .skeleton-Banner {
