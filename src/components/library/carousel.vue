@@ -7,7 +7,8 @@
         :key="item.id"
         :href="item.activeUrl"
       >
-        <img :src="item.ImgUrl" :alt="item.decribe" />
+        <!-- <img :src="item.ImgUrl" :alt="item.decribe" /> -->
+        <img :alt="item.decribe" v-lazy="item.ImgUrl"/>
       </a>
     </div>
     <div class="banner-container-pagination" v-if="swipers.length > 1">
@@ -115,12 +116,16 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  background: url(/static/images/htzx_mod_loading.png) no-repeat center #f3f4f7;
-  background-size: 84px;
+  background: #f3f4f7 ;
+  //background: url(/static/images/htzx_mod_loading.png) no-repeat center #f3f4f7;
+  //background-size: 84px;
   &-swiper {
     width: 100%;
     height: 100%;
     .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
       height: 100%;
       position: absolute;

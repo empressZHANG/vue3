@@ -53,7 +53,7 @@
           <li>
             <h3>微信公众号</h3>
             <img
-              src="@/assets/images/htzx_wxgzh@2x.png"
+              v-lazy="'/static/images/htzx_wxgzh@2x.png'"
               alt=""
               class="hw_aside_ewm"
             />
@@ -61,7 +61,7 @@
           <li>
             <h3>微博</h3>
             <img
-              src="@/assets/images/htzx_wb@2x.png"
+              v-lazy="'/static/images/htzx_wb@2x.png'"
               alt=""
               class="hw_aside_ewm"
             />
