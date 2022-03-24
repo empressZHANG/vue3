@@ -6,9 +6,19 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
 
-
+项目介绍：
+vue3.0+vite 重构pc平台
+解决 Vue2.0 页面加载空白，性能优化
 
 vue2.0 与 vue3.0的区别
-1. vue2.0 需要根元素，vue3.0可以是代码片段(fragment)
-2. vuex 没有map类型的方法 
-3. vue3 router.currentRoute 是ref响应式数据 router.currentRoute.value.fullPath
+
+1. vue2 生命周期：
+   beforeCreate -> created ->  beforeMount ->  mounted  ->   beforeUpdate ->  update  ->   beforeDestroy  ->   destroyed  
+   keep-alive专属:
+   activited deactivated
+
+   vue3 生命周期：
+   setup(创建实例前) ->  onBeforeMount(挂载Dom前) -> onMounted(挂载dom后) -> onBeforeUpdate(更新组件前) -> onUpdated(更新组件后) -> onBeforeUnmount(卸载销毁前) -> onUnmounted(卸载销毁后)
+2. vue2.0 需要根元素，vue3.0可以是代码片段(fragment)
+3. vuex 没有map类型的方法 
+4. vue3 router.currentRoute 是ref响应式数据 router.currentRoute.value.fullPath
