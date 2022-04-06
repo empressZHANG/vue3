@@ -20,7 +20,7 @@ export default {
     },
     mutations: {
         setList(state, payload) {
-            state.list = payload
+           state.list = payload
         }
     },
     actions: {

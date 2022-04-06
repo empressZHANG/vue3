@@ -5,15 +5,13 @@
         <h1>华图在线</h1>
       </a>
       <ul class="htzxHeader_nav">
-        <li id="htzxnav01"><a href="/">首页</a></li>
-        <li id="htzxnav02"><a href="/kc/">课程</a></li>
-        <li id="htzxnav03"><a href="/tiku/">题库</a></li>
-        <li id="htzxnav04"><a href="/news/">资讯</a></li>
-        <li id="htzxnav05"><a href="/sz/">师资</a></li>
-        <li id="htzxnav06">
-          <a href="/htzx/double-teacher.shtml">智慧课堂</a>
-        </li>
-        <li id="htzxnav07"><a href="/htzx/app.shtml">APP</a></li>
+        <li><RouterLink to="/">首页</RouterLink></li>
+        <li><RouterLink to="/kc/1000/1000/1000">课程</RouterLink></li>
+        <li><RouterLink to="/">题库</RouterLink></li>
+        <li><RouterLink to="/">资讯</RouterLink></li>
+        <li><RouterLink to="/">师资</RouterLink></li>
+        <li><RouterLink to="/">智慧课堂</RouterLink></li>
+        <li><RouterLink to="/">APP</RouterLink></li>
       </ul>
       <div class="htzxHeader_fun htzxHeader_flex">
         <div class="fun_search">
@@ -80,7 +78,7 @@ const profile = computed(() => {
   return store.state.user.profile;
 });
 //导航吸顶
-const {y} = useWindowScroll()
+const { y } = useWindowScroll();
 const scrollY = y;
 // const scrollY = ref(0);
 // onMounted(() => {
@@ -159,6 +157,7 @@ const scrollY = y;
       font-weight: 500;
       font-size: 17px;
       color: #333;
+      cursor: pointer;
       a {
         color: #333;
       }

@@ -7,7 +7,7 @@
   </div>
   <template v-for="item in panelCategoryList" :key="item.id">
     <homePanel :title="item.text" :cateId="item.id">
-      <template #right><Homemore /></template>
+      <template #right><Homemore :path="`/kc/${item.id}/1000/1000`"/></template>
     </homePanel>
   </template>
 </template>
@@ -32,9 +32,6 @@ panelCategory().then((res) => {
 });
 </script>
 <style scoped lang="less">
-.htzxMain {
-  margin-top: 97px;
-}
 .index_category_banner {
   padding-top: 24px;
   user-select: none;

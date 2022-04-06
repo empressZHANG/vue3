@@ -3,6 +3,7 @@ import Homemore from './Homemore.vue'
 import course from './course.vue'
 import skeleton from './skeleton.vue'
 import HomeSkeleton from './HomeSkeletion.vue'
+import listLoading from './listLoading.vue'
 import defaultImg from '../../../static/images/htzx_mod_loading.png'
 
 export default {
@@ -14,6 +15,7 @@ export default {
         app.component(Homemore.name, Homemore)
         app.component(course.name, course)
         app.component(HomeSkeleton.name, HomeSkeleton)
+        app.component(listLoading.name,listLoading)
         //自定义指令-图片懒加载
         defineDirective(app)
     }

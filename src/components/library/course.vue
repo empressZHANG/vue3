@@ -302,7 +302,7 @@ export default {
     }
   }
   &.collection {
-    margin-bottom: 4px;
+    margin-bottom: 24px;
     height: 276px;
     .collection-label {
       display: inline-block;

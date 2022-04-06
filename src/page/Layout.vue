@@ -1,7 +1,7 @@
 <template>
   <topNav />
   <headerBar />
-  <main>
+  <main class="htzxWrap">
     <!--二级路由-->
     <RouterView />
   </main>
