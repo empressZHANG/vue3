@@ -11,7 +11,7 @@
         <li><RouterLink to="/">资讯</RouterLink></li>
         <li><RouterLink to="/">师资</RouterLink></li>
         <li><RouterLink to="/">智慧课堂</RouterLink></li>
-        <li><RouterLink to="/">APP</RouterLink></li>
+        <li><RouterLink to="/app">APP</RouterLink></li>
       </ul>
       <div class="htzxHeader_fun htzxHeader_flex">
         <div class="fun_search">
