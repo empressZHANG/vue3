@@ -5,9 +5,9 @@ import store from '@/store'
 import ui from './components/library'
 import aos from 'aos'
 
-import 'aos/dist/aos.css'
+import '../node_modules/aos/dist/aos.css'
 import '@/assets/styles/common.less'
 
-aos.init();
+createApp(App).use(store).use(router).use(ui).use(aos).mount('#app')
 
-createApp(App).use(store).use(router).use(ui).mount('#app')
+aos.init();
