@@ -1,5 +1,16 @@
 <template>
-  <div :class="[scrollY > 78 ? 'header-sticky htzxHeader' : 'htzxHeader']">
+  <div
+    :class="[
+      isMember
+        ? 'htzxHeader member'
+        : scrollY > 78
+        ? 'header-sticky htzxHeader'
+        : 'htzxHeader',
+    ]"
+    :style="[
+      isMember ? 'position:relative;top:0;' : 'position:fixed;top:32px;',
+    ]"
+  >
     <div class="htzxMain htzxHeader_flex">
       <a href="" class="htzxHeader_logo">
         <h1>华图在线</h1>
@@ -69,7 +80,8 @@
 </template>
 <script setup>
 import { useStore } from "vuex";
-import { onMounted, ref, computed } from "vue";
+import { onMounted, ref, computed, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { useWindowScroll } from "@vueuse/core";
 const store = useStore();
 //const { profile } = store.state.user;
@@ -80,6 +92,28 @@ const profile = computed(() => {
 //导航吸顶
 const { y } = useWindowScroll();
 const scrollY = y;
+
+const route = useRoute();
+let isMember = ref(false);
+onMounted(() => {
+  const fullPath = route.fullPath;
+  if (fullPath.indexOf("/member") != -1) {
+    isMember.value = true;
+  } else {
+    isMember.value = false;
+  }
+});
+watch(
+  () => route.fullPath,
+  (n, o) => {
+    if (n.indexOf("/member") != -1) {
+      isMember.value = true;
+    } else {
+      isMember.value = false;
+    }
+  }
+);
+
 // const scrollY = ref(0);
 // onMounted(() => {
 //   window.onscroll = () => {
@@ -355,6 +389,46 @@ const scrollY = y;
         background: @primaryBg;
       }
     }
+  }
+}
+.htzxHeader.member {
+  background: #1a191e;
+  color: #ccc;
+  a {
+    color: #ccc;
+    &.htzxHeader_logo {
+      background-image: url(../static/images/member_logo@2x.png);
+    }
+  }
+  li {
+    border-bottom-color: #1a191e;
+    a {
+      color: #ccc;
+    }
+    &#htzxnav01 {
+      border-bottom-color: #f0d1af;
+    }
+    &#htzxnav01 a {
+      color: #f0d1af;
+    }
+  }
+  .fun_search {
+    background: #525158;
+    border-color: #525158;
+    .fun_search_input {
+      background: #525158;
+    }
+  }
+  .fun_entry {
+    span {
+      &#loginEntry {
+        color: #f0d1af;
+      }
+    }
+  }
+  .fun_btn_reg {
+    background: #f0d1af;
+    color: #000;
   }
 }
 </style>

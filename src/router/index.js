@@ -22,7 +22,7 @@ const routes = [{
         path:'/app',
         component: appPage
     }, {
-        path: '/member',
+        path: '/member/:interestsId/:type',
         component: memberIndex
     }]
 }]

@@ -1,5 +1,8 @@
 <template>
-  <div :class="[scrollY > 78 ? 'htzxTop' : 'htzxTop htzxTop-sticky']">
+  <div
+    :class="[scrollY > 78 ? 'htzxTop' : 'htzxTop htzxTop-sticky']"
+    v-if="isSHowNavBar"
+  >
     <div class="htzxMain clearfix">
       <div class="fl">
         <a href="#">网站导航</a>
@@ -23,12 +26,35 @@
   </div>
 </template>
 <script setup>
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted, ref, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { useWindowScroll } from "@vueuse/core";
 
 //page滚动监听
-const {y} = useWindowScroll()
+const { y } = useWindowScroll();
 const scrollY = y;
+
+const route = useRoute();
+let isSHowNavBar = ref(true);
+onMounted(() => {
+  const fullPath = route.fullPath;
+  if (fullPath.indexOf("/member") != -1) {
+    isSHowNavBar.value = false;
+  } else {
+    isSHowNavBar.value = true;
+  }
+});
+watch(
+  () => route.fullPath,
+  (n, o) => {
+    if (n.indexOf("/member") != -1) {
+      isSHowNavBar.value = false;
+    } else {
+      isSHowNavBar.value = true;
+    }
+  }
+);
+
 // let scrollTop = ref(0);
 // const scrollY = () => {
 //   scrollTop.value = document.documentElement.scrollTop;
@@ -48,8 +74,8 @@ const scrollY = y;
   z-index: 99;
   width: 100%;
   height: 32px;
-  transition: all .2s;
-  transform:translateY(-100%);
+  transition: all 0.2s;
+  transform: translateY(-100%);
   background: @infoBg;
   line-height: 32px;
   font-weight: 400;

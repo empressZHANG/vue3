@@ -4,6 +4,7 @@ import router from '../router'
 
 export const baseURL = 'https://testapi.huatu.com'
 export const panguURL = 'https://devpangu-api.htexam.com'
+export const javaURL = 'https://test-ns.htexam.com'
 
 const instance = axios.create({
     baseURL,

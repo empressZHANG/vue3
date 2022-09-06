@@ -1,6 +1,5 @@
 import {
-    request,
-    panguURL
+    request
 } from '@/utils/request'
 
 export const subFilterData = () => {

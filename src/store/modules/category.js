@@ -5,6 +5,9 @@ import {
 import {
     findAllCategory
 } from '@/api/home.js'
+import {
+    getInterestList
+} from '@/api/member.js'
 export default {
     namespaced: true,
     state() {
@@ -15,12 +18,17 @@ export default {
                     name: '',
                     cateKey: item
                 }
-            })
+            }),
+            //会员考试类型集合
+            interestList:[]
         }
     },
     mutations: {
         setList(state, payload) {
-           state.list = payload
+            state.list = payload
+        },
+        setInterestList(state, payload){
+            state.interestList = payload
         }
     },
     actions: {
@@ -34,6 +42,10 @@ export default {
                 }
             })
             commit('setList', cateGoryData)
+        },
+        async getMemberInterestList({commit}){
+            const data = await getInterestList();
+            commit('setInterestList', data.data)
         }
     }
 }

@@ -1,4 +1,6 @@
-import {createApp} from 'vue'
+import {
+    createApp
+} from 'vue'
 import App from '@/app.vue'
 import router from '@/router'
 import store from '@/store'
@@ -8,6 +10,11 @@ import aos from 'aos'
 import '../node_modules/aos/dist/aos.css'
 import '@/assets/styles/common.less'
 
-createApp(App).use(store).use(router).use(ui).use(aos).mount('#app')
+router.beforeEach((to, from, next) => {
+    console.log(to);
+    next();
+})
+
+createApp(App).use(store).use(router).use(ui).mount('#app')
 
 aos.init();
